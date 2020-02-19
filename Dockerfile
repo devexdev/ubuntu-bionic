@@ -1,6 +1,7 @@
 FROM ubuntu:bionic
 
 RUN apt-get update \
+    && apt-get -y upgrade\
     && apt-get install -y \
     curl \
     git \
