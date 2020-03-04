@@ -5,6 +5,7 @@ RUN apt-get update \
     curl \
     git \
     gnupg \
+    jq \
     maven \
     openjdk-8-jdk \
     python3 \
@@ -38,6 +39,10 @@ RUN apt-get update \
     #
     && pip3 install pyyaml \
     #
+    # Install yq for parsing yaml
+    #
+    && pip3 install yq \
+    #
     # Clean up to reduce image size
     #
     && apt-get -y autoremove \
@@ -46,4 +51,5 @@ RUN apt-get update \
 # Pre-populate the maven cache to speed up the
 # java builds.
 ADD m2-repository.tgz /root/
+
 
