@@ -31,6 +31,16 @@ RUN apt-get update \
     && mv vault /usr/local/bin \
     && rm -rf vault_1.3.2_linux_amd64.zip \
     #
+    # Install helm 3
+    #
+    && wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz \
+    && mkdir -p /opt/helm3 \
+    && tar -zxvf helm-v3.0.2-linux-amd64.tar.gz -C /opt/helm3 \
+    && chmod -R 777 /opt/helm3 \
+    && mv /opt/helm3/linux-amd64/helm /opt/helm3/linux-amd64/helm3 \
+    && ln -s /opt/helm3/linux-amd64/helm3 /usr/local/bin \
+    && rm -rf helm-v3.0.2-linux-amd64.tar.gz \
+    #
     # Maven installs Java 11 but we want java 8
     #
     && apt-get purge -y openjdk-11-jre-headless \
